@@ -13,7 +13,7 @@ In GTM add the following tag, with the following firing trigger options:
 
 ```html
 <script type="text/javascript">
-/* NUVIAD tracking code start */
+/* Hubzity tracking code start */
 (function() {
     "use strict";
 
@@ -29,12 +29,12 @@ In GTM add the following tag, with the following firing trigger options:
     });
 
     trackingScript.addEventListener("error", function () {
-        console.log("Failed to load NUVIAD tracking SDK");
+        console.log("Failed to load Hubzity tracking SDK");
     });
 
     head.appendChild(trackingScript);
 })();
-/* NUVIAD tracking code end */
+/* Hubzity tracking code end */
 </script>
 ```
 
@@ -56,7 +56,7 @@ In GTM add the following tag. Make sure the tag fires on the proper events (e.g.
 
 ```html
 <script type="text/javascript">
-/* NUVIAD conversion stage tracking start */
+/* Hubzity conversion stage tracking start */
 (function() {
     "use strict";
 
@@ -77,13 +77,13 @@ In GTM add the following tag. Make sure the tag fires on the proper events (e.g.
         });
         
         trackingScript.addEventListener("error", function () {
-            console.log("Failed to load NUVIAD tracking SDK");
+            console.log("Failed to load Hubzity tracking SDK");
         });
         
         head.appendChild(trackingScript);
     }
 })();
-/* NUVIAD conversion stage tracking end */
+/* Hubzity conversion stage tracking end */
 </script>
 ```
 
