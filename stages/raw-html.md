@@ -4,7 +4,12 @@ Hubzity provides tracking code that can report to the campaign post-click events
 
 ## Storing Click Session
 
-The first step when tracking is to store the click id in a local cookie so we can use it when we<script type="text/javascript">
+The first step when tracking is to store the click id in a local cookie so we can use it when we need to track post click events.
+
+Just paste the following code in your html:
+
+```html
+<script type="text/javascript">
 /* Hubzity tracking code start */
 (function() {
     "use strict";
@@ -28,11 +33,6 @@ The first step when tracking is to store the click id in a local cookie so we ca
 })();
 /* Hubzity tracking code end */
 </script>
- need to track post click events. 
-
-Just paste the following code in your html:
-
-```html
 ```
 
 ## Conversion Stages
@@ -47,16 +47,46 @@ Consider the following scenario. You have a product subscription process and wit
 2. Stage 1 - user fills the registration form.
 2. Stage 2 - user clicks 'Subscribe' button.
 
-To enable conversion tracking attach  the following code to the event handlers that on your page that reflect user actions (your webmaster or site developer should know how handle it). For example, if your site has 'Subscribe' button, the code could look like this:
+To enable conversion tracking attach the following code to the event handlers that on your page that reflect user actions (your webmaster or site developer should know how handle it). 
 
+### Example 1. Conversion stage is bound to a non-link (`<a href="/">`) element click
+
+HTML:
+```html
+<button class="btn-subscribe" onclick="subscribe();">Subscribe now</button>
+```
+
+JS
 ```js
 $('.btn-subscribe').on('click', function() {
-/* Hubzity conversion stage tracking start */
-var CONVERSION_STAGE = "2";
-window.trackingConversion(CONVERSION_STAGE);
-/* Hubzity conversion stage tracking end */
+    /* Hubzity conversion stage tracking start */
+    var CONVERSION_STAGE = "2";
+    window.trackingConversion(CONVERSION_STAGE);
+    /* Hubzity conversion stage tracking end */
 });
 ```
+
+### Example 2. Conversion stage is bound to a link (`<a href="/">`) element click
+
+HTML:
+```html
+<a class="link-subscribe" href="/subscribe">Subscribe now</a>
+```
+
+JS:
+```js
+$('.link-subscribe').on('click', function(e) {
+    /* Hubzity conversion stage tracking start */
+    e.preventDefault();
+    var CONVERSION_STAGE = "2";
+    window.trackingConversion(CONVERSION_STAGE, false, function() {
+        document.location = e.target.href;
+    });
+    /* Hubzity conversion stage tracking end */
+});
+```
+
+**IMPORTANT:** please use this example for link elements (`<a>`). By default on click event link element starts navigation to a different page. In order to let tracking code run correctly we add a little delay to give the code a chance finish its job before browser opens a new page.
 
 To track other stages you just need to change **CONVERSION_STAGE** variable value in quotes to a different stage e.g. **"1"**.
 
