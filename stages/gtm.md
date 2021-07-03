@@ -5,6 +5,7 @@ Hubzity provides tracking code that can report to the campaign post-click events
 ## Storing Click Session
 
 The first step when tracking is to store the click id in a local cookie so we can use it when we need to track post click events. 
+Note: This code covers one, load, conversion event type (stage 0). In case you need to tag several events (e.g. a click on `Contact Us` button) you should also add the lower example with CONVERSION_STAGE.
 
 In GTM add the following tag, with the following firing trigger options:
 
@@ -46,12 +47,12 @@ Conversion tracking usually happens when user performs some actions on your page
 
 Consider the following scenario. You have a product subscription process and within this process user needs to fill a registration form. Let"s imagine your conversion process consists of 3 stages:
 
-1. Stage 0 - user opens the registration page.
-2. Stage 1 - user fills the registration form.
-2. Stage 2 - user clicks "Subscribe" button.
+1. Stage 0 - user loads the landing page. This is covered by the code above.
+2. Stage 1 - e.g. user fills in the registration form. This should be added as sampled below.
+3. Stage 2 - e.g. user clicks ‘Subscribe’ button. This should be added as sampled below.
 
-To track other stages you just need to change **CONVERSION_STAGE** variable value in quotes to a different stage e.g. **"2"**.
-
+To track other events/ stages you just need to change **TRACKING_CONVERSION_STAGE** variable value in quotes to a different stage e.g. **"2"**.
+Numbers 1-9 can be used for the TRACKING_CONVERSION_STAGE (0 is already in use for page-load).
 In GTM add the following tag. Make sure the tag fires on the proper events (e.g. on click on `Contact Us` button). 
 
 ```html
@@ -87,4 +88,4 @@ In GTM add the following tag. Make sure the tag fires on the proper events (e.g.
 </script>
 ```
 
-Please note: the code mentioned in **Storing Click Session** section **MUST BE** also added to the GTM where you want to track conversions.
+Please note: the code mentioned in **Storing Click Session** section above **MUST BE** also added to the GTM where you want to track conversions.
