@@ -5,6 +5,7 @@ Hubzity provides tracking code that can report to the campaign post-click events
 ## Storing Click Session
 
 The first step when tracking is to store the click id in a local cookie so we can use it when we need to track post click events.
+Note: This code covers one, page-load conversion event type (stage 0). In case you need to tag several events (e.g. a click on `Contact Us` button) you should also add the lower example with CONVERSION_STAGE.
 
 Just paste the following code in your html:
 
@@ -43,11 +44,14 @@ Conversion tracking usually happens when user performs some actions on your page
 
 Consider the following scenario. You have a product subscription process and within this process user needs to fill a registration form. Let's imagine your conversion process consists of 3 stages:
 
-1. Stage 0 - user opens the registration page.
-2. Stage 1 - user fills the registration form.
-2. Stage 2 - user clicks 'Subscribe' button.
+1. Stage 0 - user loads the landing page. This is covered by the code above.
+2. Stage 1 - e.g. user fills in the registration form. This should be added as sampled below.
+2. Stage 2 - e.g. user clicks ‘Subscribe’ button. This should be added as sampled below.
 
-To enable conversion tracking attach the following code to the event handlers that on your page that reflect user actions (your webmaster or site developer should know how handle it). 
+To enable conversion tracking with multiple stages (for example clicking on a button, filing a registration form etc.), add also the following code to the event handlers which reflect user actions on your page. Numbers 1-9 can be used for the CONVERSION_STAGE (0 is already in use for load).
+Your webmaster or site developer should know how handle it. 
+For example, if your site has a ‘Subscribe’ button, the code could look like this:
+Make sure you put this code where you actually want it to be executed, and replace the class btn-subscribe with your own in order to invoke the reporting on this stage...
 
 ### Example 1. Conversion stage is bound to a non-link (`<a href="/">`) element click
 
@@ -90,4 +94,4 @@ $('.link-subscribe').on('click', function(e) {
 
 To track other stages you just need to change **CONVERSION_STAGE** variable value in quotes to a different stage e.g. **"1"**.
 
-Please note: the code mentioned in **Storing Click Session** section **MUST BE** also added to the page where you want to track conversions.
+Please note: the code mentioned in the above **Storing Click Session** section **MUST BE** also added to the page where you want to track conversions.
