@@ -7,7 +7,7 @@ Hubzity provides tracking code that can report to the campaign post-click events
 The first step when tracking is to store the click id in a local cookie so we can use it when we need to track post click events.
 Note: This code covers one, page-load conversion event type (stage 0). In case you need to tag several events (e.g. a click on `Contact Us` button) you should also add the lower example with CONVERSION_STAGE.
 
-Just paste the following code in your html:
+Just paste the following code in your html header:
 
 ```html
 <script type="text/javascript">
@@ -23,7 +23,7 @@ Just paste the following code in your html:
 
     trackingScript.addEventListener("load", function () {
         window.trackingStoreSession();
-        window.trackingConversion("0");
+        // window.trackingConversion("0");
     });
 
     trackingScript.addEventListener("error", function () {
@@ -35,6 +35,11 @@ Just paste the following code in your html:
 /* Hubzity tracking code end */
 </script>
 ```
+
+In your HTML <body> of the first landing page, paste this transparent pixel:
+<img src="https://notify.nuviad.com/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
+
+
 
 ## Conversion Stages
 
