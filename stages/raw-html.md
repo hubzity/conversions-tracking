@@ -37,8 +37,9 @@ Just paste the following code in your html header:
 ```
 
 In your HTML <body> of the first landing page, paste this transparent pixel:
-<img src="https://notify.nuviad.com/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
-
+```html
+    <img src="https://notify.nuviad.com/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
+```
 
 
 ## Conversion Stages
