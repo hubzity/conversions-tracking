@@ -39,6 +39,12 @@ In GTM add the following tag, with the following firing trigger options:
 </script>
 ```
 
+
+In your HTML <body> of the first landing page, paste this transparent pixel:
+```html
+    <img src="https://notify.nuviad.com/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
+```
+    
 ## Conversion Stages
 
 The post-click event tracker can track up to 10 events (0-9) reported by you in your html page as you see fit. As noted, these can represent different stages in your conversion funnel or different events on the landing page.
