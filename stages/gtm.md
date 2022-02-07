@@ -67,7 +67,7 @@ In GTM add the following tag. Make sure the tag fires on the proper events (e.g.
 (function() {
     "use strict";
 
-    var TRACKING_CONVERSION_STAGE = "2";
+    var TRACKING_CONVERSION_STAGE = "2";  /* Change this number according to the stage to be reported upon page load */
     if (window.trackingStoreSession !== undefined && window.trackingConversion !== undefined) {
         window.trackingStoreSession();
         window.trackingConversion(TRACKING_CONVERSION_STAGE);
