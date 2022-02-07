@@ -42,7 +42,7 @@ In GTM add the following tag, with the following firing trigger options:
 
 In your HTML <body> of the first landing page, paste this transparent pixel:
 ```html
-    <img src="https://notify.nuviad.com/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
+    <img src="https://notify.rtbaxs.io/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
 ```
     
 ## Conversion Stages
