@@ -38,7 +38,7 @@ Just paste the following code in your html header:
 
 In your HTML <body> of the first landing page, paste this transparent pixel:
 ```html
-    <img src="https://notify.nuviad.com/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
+    <img src="https://notify.rtbaxs.io/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
 ```
 
 
