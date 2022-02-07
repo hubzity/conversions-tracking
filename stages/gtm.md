@@ -26,7 +26,7 @@ In GTM add the following tag, with the following firing trigger options:
 
     trackingScript.addEventListener("load", function () {
         window.trackingStoreSession();
-        window.trackingConversion("0"); 
+        //window.trackingConversion("0"); this first page load is reported via the pixel
     });
 
     trackingScript.addEventListener("error", function () {
