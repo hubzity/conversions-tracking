@@ -1,12 +1,12 @@
 # How to use Hubzity tracking with stages
 
 Hubzity provides tracking code that can report to the campaign post-click events. These events can represent different stages of a sales funnel, different event on a page and so on.
+Notice for these examples you need to include the JQuery:
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 ## Storing Click Session
 
 The first step when tracking is to store the click id in a local cookie so we can use it when we need to track post click events.
-Note: This code covers one, page-load conversion event type (stage 0). In case you need to tag several events (e.g. a click on `Contact Us` button) you should also add the lower example with CONVERSION_STAGE.
-
 Just paste the following code in your html header:
 
 ```html
@@ -36,7 +36,7 @@ Just paste the following code in your html header:
 </script>
 ```
 
-In your HTML <body> of the first landing page, paste this transparent pixel:
+The initial conversion tracked on our platform is stage 0 which confirms that the user got to the landing page. This stage 0 report is achieved by a transparent pixel. In your HTML <body> of the first landing page, paste this transparent pixel:
 ```html
     <img src="https://notify.rtbaxs.io/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
 ```
@@ -50,9 +50,9 @@ Conversion tracking usually happens when user performs some actions on your page
 
 Consider the following scenario. You have a product subscription process and within this process user needs to fill a registration form. Let's imagine your conversion process consists of 3 stages:
 
-1. Stage 0 - user loads the landing page. This is covered by the code above.
+1. Stage 0 - user loads the landing page. This is covered by the pixel above.
 2. Stage 1 - e.g. user fills in the registration form. This should be added as sampled below.
-2. Stage 2 - e.g. user clicks ‘Subscribe’ button. This should be added as sampled below.
+3. Stage 2 - e.g. user clicks ‘Subscribe’ button. This should be added as sampled below.
 
 To enable conversion tracking with multiple stages (for example clicking on a button, filing a registration form etc.), add also the following code to the event handlers which reflect user actions on your page. Numbers 1-9 can be used for the CONVERSION_STAGE (0 is already in use for load).
 Your webmaster or site developer should know how handle it. 
@@ -100,4 +100,4 @@ $('.link-subscribe').on('click', function(e) {
 
 To track other stages you just need to change **CONVERSION_STAGE** variable value in quotes to a different stage e.g. **"1"**.
 
-Please note: the code mentioned in the above **Storing Click Session** section **MUST BE** also added to the page where you want to track conversions.
+Please note: the code mentioned in the above **Storing Click Session** section **MUST BE** also added to **each** page where you want to track conversions.
