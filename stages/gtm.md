@@ -1,11 +1,12 @@
 # How to use Hubzity tracking with stages
 
 Hubzity provides tracking code that can report to the campaign post-click events. These events can represent different stages of a sales funnel, different event on a page and so on.
+Notice for these examples you need to include the JQuery:
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 ## Storing Click Session
 
 The first step when tracking is to store the click id in a local cookie so we can use it when we need to track post click events. 
-Note: This code covers one, load, conversion event type (stage 0). In case you need to tag several events (e.g. a click on `Contact Us` button) you should also add the lower example with CONVERSION_STAGE.
 
 In GTM add the following tag, with the following firing trigger options:
 
@@ -26,7 +27,6 @@ In GTM add the following tag, with the following firing trigger options:
 
     trackingScript.addEventListener("load", function () {
         window.trackingStoreSession();
-        //window.trackingConversion("0"); this first page load is reported via the pixel
     });
 
     trackingScript.addEventListener("error", function () {
@@ -39,8 +39,7 @@ In GTM add the following tag, with the following firing trigger options:
 </script>
 ```
 
-
-In your HTML <body> of the first landing page, paste this transparent pixel:
+The initial conversion tracked on our platform is stage 0 which confirms that the user got to the landing page. This stage 0 report is achieved by a transparent pixel. In your HTML <body> of the first landing page, please paste this transparent pixel:
 ```html
     <img src="https://notify.rtbaxs.io/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
 ```
@@ -53,7 +52,7 @@ Conversion tracking usually happens when user performs some actions on your page
 
 Consider the following scenario. You have a product subscription process and within this process user needs to fill a registration form. Let"s imagine your conversion process consists of 3 stages:
 
-1. Stage 0 - user loads the landing page. This is covered by the code above.
+1. Stage 0 - user loads the landing page. This is covered by the pixel above.
 2. Stage 1 - e.g. user fills in the registration form. This should be added as sampled below.
 3. Stage 2 - e.g. user clicks ‘Subscribe’ button. This should be added as sampled below.
 
@@ -80,7 +79,7 @@ In GTM add the following tag. Make sure the tag fires on the proper events (e.g.
         
         trackingScript.addEventListener("load", function () {
             window.trackingStoreSession();
-            window.trackingConversion(TRACKING_CONVERSION_STAGE);
+            window.trackingConversion(TRACKING_CONVERSION_STAGE); //use this in each following pages in case you want to track their loading
         });
         
         trackingScript.addEventListener("error", function () {
