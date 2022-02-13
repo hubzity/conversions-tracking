@@ -39,7 +39,7 @@ In GTM add the following tag, with the following firing trigger options:
 </script>
 ```
 
-The initial conversion tracked on our platform is stage 0 which confirms that the user got to the landing page. This stage 0 report is achieved by a transparent pixel. In your HTML <body> of the first landing page, please paste this transparent pixel:
+The initial conversion tracked on our platform is stage 0 which confirms that the user got to the landing page. This stage 0 report is achieved by a transparent pixel. In your HTML `<body>` of the first landing page, please paste this transparent pixel:
 ```html
     <img src="https://notify.rtbaxs.io/conversion/pixel" referrerpolicy="no-referrer-when-downgrade" type="image/gif" />
 ```
